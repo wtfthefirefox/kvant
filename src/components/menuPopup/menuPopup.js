@@ -27,33 +27,45 @@ const MenuPopup = ({ closePopup }) => {
   } else if (isTimeRecActive) {
     return (
       <BlackWrap>
-        <VolumeWrap topValue="100px" heightVal="80px">
-          <TouchableOpacity onPress={() => changeTimeRec(timeRec + 1 < 601 ? timeRec + 1: timeRec)} >
-            <icons.Plus width={35} height={35} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => changeTimeRec(timeRec - 1 > 1 ? timeRec - 1: timeRec)} > 
-            <icons.Minus width={35} height={35} />
-          </TouchableOpacity>
-          <VolumeFormWrap>
-            <VolumeFormValue>{`${timeRec} c`}</VolumeFormValue>
-          </VolumeFormWrap>
-        </VolumeWrap>
+        <TouchableOpacity onPress={() => changeIsTimeRecActive(false)} style={{ position: "absolute", top: 20, right: 8}} >
+          <icons.Exit />
+        </TouchableOpacity>
+        <CounterWrap>
+          <CounterTitle>Время записи</CounterTitle>
+          <CounterWrapInner>
+            <TouchableOpacity onPress={() => changeTimeRec(timeRec + 1 < 601 ? timeRec + 1: timeRec)} style={{marginRight: 5}} >
+              <icons.Plus width={35} height={35} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => changeTimeRec(timeRec - 1 > 1 ? timeRec - 1: timeRec)} style={{marginRight: 10}} > 
+              <icons.Minus width={35} height={35} />
+            </TouchableOpacity>
+            <VolumeFormWrap>
+              <VolumeFormValue>{`${timeRec} c`}</VolumeFormValue>
+            </VolumeFormWrap>
+          </CounterWrapInner>
+        </CounterWrap>
       </BlackWrap>
     )
   } else if (isTimeActive) {
     return (
       <BlackWrap>
-        <VolumeWrap topValue="100px" heightVal="80px">
-          <TouchableOpacity onPress={() => changeTime(timeRec + 1 < 601 ? timeRec + 1: timeRec)} >
-            <icons.Plus width={35} height={35} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => changeTime(timeRec - 1 > 5 ? timeRec - 1: timeRec)} > 
-            <icons.Minus width={35} height={35} />
-          </TouchableOpacity>
-          <VolumeFormWrap>
-            <VolumeFormValue>{`${time} c`}</VolumeFormValue>
-          </VolumeFormWrap>
-        </VolumeWrap>
+        <TouchableOpacity onPress={() => changeIsTimeActive(false)} style={{ position: "absolute", top: 20, right: 8}} >
+          <icons.Exit />
+        </TouchableOpacity>
+        <CounterWrap>
+          <CounterTitle>Период записи</CounterTitle>
+          <CounterWrapInner>
+            <TouchableOpacity onPress={() => changeTime(timeRec + 1 < 601 ? timeRec + 1: timeRec)} style={{marginRight: 5}} >
+              <icons.Plus width={35} height={35} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => changeTime(timeRec - 1 > 5 ? timeRec - 1: timeRec)} style={{marginRight: 10}} > 
+              <icons.Minus width={35} height={35} />
+            </TouchableOpacity>
+            <VolumeFormWrap>
+              <VolumeFormValue>{`${time} c`}</VolumeFormValue>
+            </VolumeFormWrap>
+          </CounterWrapInner>
+        </CounterWrap>
       </BlackWrap>
     )
   } else if (isSettingPopup) {
@@ -180,7 +192,6 @@ const VolumeWrap = styled.View`
   top: ${props => props.topValue};
   left: 10px;
   width: 78%;
-  /* height: 60px; */
   height: ${props => props.heightVal};
   background-color: #697CC2;
   border-radius: 10px;
@@ -192,7 +203,7 @@ const VolumeWrap = styled.View`
 `;
 
 const VolumeFormWrap = styled.View`
-  width: 70%;
+  width: 66%;
   height: 40px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -206,6 +217,36 @@ const VolumeFormValue = styled.Text`
   color: rgba(0, 0, 0, 0.5);
   font-size: 24px;
   line-height: 24px;
+`;
+
+const CounterWrap = styled.View`
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 78%;
+  height: 100px;
+  background-color: #697CC2;
+  padding-top: 10px;
+  border-radius: 20px;
+  border-color: rgba(14, 23, 243, 0.5);
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const CounterTitle = styled.Text`
+  color: #000000;
+  font-size: 24px;
+  line-height: 24px;
+`;
+
+const CounterWrapInner = styled.View`
+  width: 100%;
+  height: 60px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export default MenuPopup;
