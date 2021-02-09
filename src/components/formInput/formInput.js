@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 import styled from 'styled-components';
 
-const FormInput = ({ placeholderValue, formName, marginBottomValue, isPassword, textChangerFunc }) => {
+const FormInput = ({ placeholderValue, formName, marginBottomValue, isPassword }) => {
   return (
     <FormWrapper marginBottomVal={marginBottomValue}>
       <FormName>{formName}</FormName>
-      <TextInput style={styles.Form} placeholder={placeholderValue} secureTextEntry={isPassword} onChange={(text) => textChangerFunc(text)} /> 
+      <TextInput style={styles.Form} placeholder={placeholderValue} secureTextEntry={isPassword} /> 
     </FormWrapper>
   )
 }
@@ -27,15 +27,14 @@ const styles = StyleSheet.create({
 const FormWrapper = styled.View`
   max-width: 600px;
   width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
   margin-bottom: ${props => props.marginBottomVal};
 `;
 
 const FormName = styled.Text`
+  text-align: center;
   font-size: 24px;
   line-height: 24px;
-  color: #2A52BE;
+  color: #000000;
   margin-bottom: 25px;
 `;
 

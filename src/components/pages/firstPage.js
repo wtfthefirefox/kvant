@@ -13,7 +13,7 @@ const FirstPage = () => {
     const [isPopupActive, changeIsPopupActive] = useState(false);
 
     return (
-        <>
+        <> 
             {
               isPopupActive &&
 
@@ -24,7 +24,7 @@ const FirstPage = () => {
 
             <TopWrap>
                 <BtnPowerWrap>
-                    <icons.Power />
+                    <icons.ConnectOff />
                 </BtnPowerWrap>
                 <TouchableOpacity onPress={() => changeIsPopupActive(true)} >
                   <icons.Menu />
